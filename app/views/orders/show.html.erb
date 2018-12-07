@@ -9,10 +9,11 @@
     <h4>Order received from <%= @order.email %></h4>
     <h4>You purchased <%= @order.line_items.size %> items</h4>
     <h4>
-    <h4>You spent $<%=Money.new(@order.total_cents, "USD") %> </h4>
+    <h4>Total spent: $<%=Money.new(@order.total_cents, "USD") %> </h4>
+    <h4>Items: </h4>
     <% @order.line_items.each do |item| %>
-      <h4><%= Money.new(item.item_price_cents, "USD") %></h4>
-      <h4><%= item.product.name %>
+      <h4><%= item.product.name %>: $<%= Money.new(item.item_price_cents, "USD") %></h4>
+      <img src="<%= item.product.image %>">
       <% end %>
 
     <h4>Thank you for your order!</h4>
