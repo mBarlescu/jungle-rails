@@ -9,6 +9,17 @@
       </button>
       <a class="navbar-brand" href="/">Jungle</a>
     </div>
+
+    <div id="navbar">
+      <% if current_user %>
+        Signed in as <%= current_user.email %> <%= link_to "Logout", '/logout' %>
+      <% else %>
+        <%= link_to 'Login', '/login' %> <%= link_to 'Register', '/users/new' %>
+      <% end %>
+
+    </div>
+
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
