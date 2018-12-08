@@ -26,6 +26,10 @@
       </div>
     </div>
 
+    <% if (@product.reviews.size > 0) %>
+      <div>Average rating: <%= @product.reviews.average(:rating) %> </div>
+    <% end %>
+
   </article>
 
 </section>
