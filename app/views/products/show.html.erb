@@ -28,6 +28,22 @@
 
     <% if (@product.reviews.size > 0) %>
       <div>Average rating: <%= @product.reviews.average(:rating) %> </div>
+      <div>List of individual ratings: </div>
+      <% @product.reviews.each do |review| %>
+      <div><%= review.rating %></div>
+      <div><%= review.description %></div>
+    <% end %>
+    <% end %>
+
+    <div class="form-group">
+      <%= form_for([@product, @review]) do |f| %>
+    <div class="form-inputs">
+      <%= f.text_area :description %>
+      <%= f.select :rating, options_for_select(["1", "2", "3", "4", "5"]) %>
+    </div>
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
     <% end %>
 
   </article>
