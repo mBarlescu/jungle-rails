@@ -1,5 +1,7 @@
 class ReviewsController < ApplicationController
 
+
+
   def create
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
     @product = Product.find params[:product_id]
@@ -14,6 +16,12 @@ class ReviewsController < ApplicationController
     redirect_to @product
 
   end
+
+  def destroy
+        @review = Review.find params[:id]
+        @review.destroy
+        redirect_to "/products/#{params[:product_id]}"
+    end
 
 
 
