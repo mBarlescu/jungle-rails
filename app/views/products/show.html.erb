@@ -26,10 +26,7 @@
       </div>
     </div>
 
-    <% if (@product.reviews.size > 0) %>
-      <div class="rating">Average rating: <%= @product.reviews.average(:rating) %> </div>
-      <br>
-        <% if session[:user_id] %>
+     <% if session[:user_id] %>
     <div class="rating1">Rate this product: </div>
     <div class="form-group">
       <%= form_for([@product, @review]) do |f| %>
@@ -43,6 +40,11 @@
     <% end %>
     <% end %>
       <hr>
+
+    <% if (@product.reviews.size > 0) %>
+      <div class="rating">Average rating: <%= @product.reviews.average(:rating) %> </div>
+      <br>
+
       <div class="rating1">List of individual ratings: </div>
       <% @product.reviews.each do |review| %>
        <div class="col-sm-8">
